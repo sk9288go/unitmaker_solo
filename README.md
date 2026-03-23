@@ -1,41 +1,36 @@
-﻿# unitmaker_solo
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## ?꾩옱 ?곹깭
+## Getting Started
 
-- **Vercel CLI 濡쒓렇??* ?꾨즺 (`sk9288go`)
-- ???대뜑??**Vercel ?꾨줈?앺듃** `sk9288gos-projects/unitmaker_solo`? ?곌껐??(`vercel link`)
-- `vercel pull`濡?媛쒕컻???섍꼍 蹂?섎뒗 `.vercel/.env.development.local`??諛쏆븘??(Git???щ━吏 留덉꽭??
-
-## GitHub? ?곌껐?섍린
-
-1. GitHub?먯꽌 **????μ냼** ?앹꽦: https://github.com/new
-   - ?대쫫: `unitmaker_solo` (?먮뒗 ?먰븯???대쫫)
-   - **README / .gitignore 異붽??섏? ?딆쓬** (?대? 濡쒖뺄???덉쓬)
-
-2. ?곕??먯뿉??(??μ냼 URL? 蹂몄씤 寃껋쑝濡?諛붽퓭二쇱꽭??:
+First, run the development server:
 
 ```bash
-cd "C:\Users\sk928\OneDrive\臾몄꽌\GitHub\unitmaker_solo"
-git remote add origin https://github.com/sk9288go/unitmaker_solo.git
-git push -u origin main
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-3. **Vercel ??GitHub ?곕룞** (諛고룷 ?먮룞??:
-   Vercel ??쒕낫?????꾨줈?앺듃 Settings ??Git?먯꽌 ??μ냼 ?곌껐
-   https://vercel.com/sk9288gos-projects/unitmaker_solo/settings/git
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## ?뚯뒪 肄붾뱶?????
-???대뜑?먮뒗 ?꾩쭅 **Next.js ???먮낯 ?뚯씪**(`app/`, `package.json` ?????놁뒿?덈떎.
-Vercel? **諛고룷 寃곌낵臾?*留?蹂닿??섎?濡? ?덉쟾??諛고룷?덈뜕 **濡쒖뺄 ?꾨줈?앺듃 ?대뜑**??**?ㅻⅨ PC/諛깆뾽**?먯꽌 ?뚯씪?????붾젆?곕━濡?蹂듭궗????而ㅻ컠쨌?몄떆?댁빞 ?⑸땲??
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-?먮낯??李얠쑝硫????대뜑???ｊ퀬:
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-```bash
-git add .
-git commit --trailer "Made-with: Cursor" -m "feat: add app source"
-git push
-```
+## Learn More
 
----
+To learn more about Next.js, take a look at the following resources:
 
-諛고룷 URL ?? https://unitmakersolo.vercel.app
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
