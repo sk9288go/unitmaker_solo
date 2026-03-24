@@ -1,375 +1,363 @@
 'use client';
+// HEADER_UI_V2 — dropdown nav + KR/EN, no Unit Maker CTA (must match Git main)
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
+
+type DropdownLink = { label: string; href: string };
+
+type NavItem = {
+  id: string;
+  label: string;
+  href: string;
+  dropdown?: DropdownLink[];
+};
+
+function getNavItems(lang: 'ko' | 'en'): NavItem[] {
+  if (lang === 'en') {
+    return [
+      {
+        id: 'product',
+        label: 'Products',
+        href: 'https://unithaus.co.kr/',
+        dropdown: [
+          { label: 'FAQ', href: 'https://unithaus.co.kr/product?section=FAQ' },
+          { label: 'Bespoke', href: 'https://unithaus.co.kr/bespoke' },
+        ],
+      },
+      {
+        id: 'b2b',
+        label: 'B2B Solutions',
+        href: 'https://unithaus.co.kr/unitpoint',
+        dropdown: [
+          { label: 'District development', href: 'https://unithaus.co.kr/unitpoint-cd' },
+          { label: 'Mountain development', href: 'https://unithaus.co.kr/unitpoint-md' },
+        ],
+      },
+      { id: 'company', label: 'Company', href: 'https://unithaus.co.kr/company' },
+      { id: 'tech', label: 'Technical Solutions', href: 'https://unithaus.co.kr/business' },
+      {
+        id: 'magazine',
+        label: 'Magazine',
+        href: 'https://unithaus.co.kr/magazine',
+        dropdown: [
+          {
+            label: 'Brand',
+            href: 'https://unitlab.co.kr/unitmagazine/category/%EB%B8%8C%EB%9E%9C%EB%93%9C-%EC%86%8C%EA%B0%9C?_gl=1*1283rzv*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+          },
+          {
+            label: 'Curation',
+            href: 'https://unitlab.co.kr/unitmagazine/category/%ED%81%90%EB%A0%88%EC%9D%B4%EC%85%98?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+          },
+          {
+            label: 'Our works',
+            href: 'https://unitlab.co.kr/unitmagazine/category/%EC%8B%9C%EA%B3%B5-%EC%82%AC%EB%A1%80?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+          },
+          {
+            label: 'Architecture',
+            href: 'https://unitlab.co.kr/unitmagazine/category/%EA%B1%B4%EC%B6%95-%EC%A0%95%EB%B3%B4?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+          },
+          {
+            label: 'News',
+            href: 'https://unitlab.co.kr/unitmagazine/category/%EC%86%8C%EC%8B%9D?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+          },
+        ],
+      },
+      {
+        id: 'works',
+        label: 'Our Works',
+        href: 'https://unit.inblog.io/category/%EC%8B%9C%EA%B3%B5-%EC%82%AC%EB%A1%80',
+      },
+    ];
+  }
+
+  return [
+    {
+      id: 'product',
+      label: '제품 소개',
+      href: 'https://unithaus.co.kr/',
+      dropdown: [
+        { label: 'FAQ', href: 'https://unithaus.co.kr/product?section=FAQ' },
+        { label: '비스포크', href: 'https://unithaus.co.kr/bespoke' },
+      ],
+    },
+    {
+      id: 'b2b',
+      label: 'B2B 솔루션',
+      href: 'https://unithaus.co.kr/unitpoint',
+      dropdown: [
+        { label: '단지개발', href: 'https://unithaus.co.kr/unitpoint-cd' },
+        { label: '산지개발', href: 'https://unithaus.co.kr/unitpoint-md' },
+      ],
+    },
+    { id: 'company', label: '회사 소개', href: 'https://unithaus.co.kr/company' },
+    { id: 'tech', label: '기술 솔루션', href: 'https://unithaus.co.kr/business' },
+    {
+      id: 'magazine',
+      label: '매거진',
+      href: 'https://unithaus.co.kr/magazine',
+      dropdown: [
+        {
+          label: '브랜드 소개',
+          href: 'https://unitlab.co.kr/unitmagazine/category/%EB%B8%8C%EB%9E%9C%EB%93%9C-%EC%86%8C%EA%B0%9C?_gl=1*1283rzv*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+        },
+        {
+          label: '큐레이션',
+          href: 'https://unitlab.co.kr/unitmagazine/category/%ED%81%90%EB%A0%88%EC%9D%B4%EC%85%98?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+        },
+        {
+          label: '시공사례',
+          href: 'https://unitlab.co.kr/unitmagazine/category/%EC%8B%9C%EA%B3%B5-%EC%82%AC%EB%A1%80?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+        },
+        {
+          label: '건축정보',
+          href: 'https://unitlab.co.kr/unitmagazine/category/%EA%B1%B4%EC%B6%95-%EC%A0%95%EB%B3%B4?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+        },
+        {
+          label: '소식',
+          href: 'https://unitlab.co.kr/unitmagazine/category/%EC%86%8C%EC%8B%9D?_gl=1*1k707hj*_ga*NzI4NTc0MDExLjE3NzM5OTEzMDg.*_ga_GYGER0QGX4*czE3NzQzMTM4ODMkbzQkZzAkdDE3NzQzMTM4ODMkajYwJGwwJGgw',
+        },
+      ],
+    },
+    {
+      id: 'works',
+      label: '시공 사례',
+      href: 'https://unit.inblog.io/category/%EC%8B%9C%EA%B3%B5-%EC%82%AC%EB%A1%80',
+    },
+  ];
+}
+
+const navLinkClass =
+  'text-[16px] font-medium tracking-[-0.5px] text-[#222] no-underline transition-colors duration-150 hover:text-[#888]';
+
+function GlobeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
+
+function DesktopNavLink({ item }: { item: NavItem }) {
+  if (!item.dropdown) {
+    return (
+      <a
+        href={item.href}
+        className={navLinkClass}
+        style={{
+          fontFamily: 'var(--font_default, Pretendard)',
+          lineHeight: item.id === 'product' ? 1 : 1.5,
+        }}
+      >
+        {item.label}
+      </a>
+    );
+  }
+
+  return (
+    <div className="group relative flex items-center">
+      <a
+        href={item.href}
+        className={`${navLinkClass} group-hover:text-[#888]`}
+        style={{
+          fontFamily: 'var(--font_default, Pretendard)',
+          lineHeight: item.id === 'product' ? 1 : 1.5,
+        }}
+      >
+        {item.label}
+      </a>
+      <div
+        className="pointer-events-none invisible absolute left-1/2 top-full z-[1600] -translate-x-1/2 pt-12 opacity-0 transition-opacity duration-150 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100"
+        role="presentation"
+      >
+        <div
+          className="flex min-w-max items-center justify-center gap-8 rounded-[14px] bg-white px-8 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,0,0,0.04)]"
+          style={{ fontFamily: 'var(--font_default, Pretendard)' }}
+        >
+          {item.dropdown.map((sub) => (
+            <a
+              key={sub.label}
+              href={sub.href}
+              className="text-[14px] font-medium tracking-[-0.3px] text-[#222] no-underline transition-colors hover:text-[#888]"
+            >
+              {sub.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { language, setLanguage, isLangEng } = useLanguage();
-  const pathname = usePathname();
+  const { language, setLanguage } = useLanguage();
+  const desktopNavItems = getNavItems(language);
 
-  const translations = {
-    ko: {
-      products: '제품 소개',
-      unitPoint: '유닛포인트',
-      company: '회사 소개',
-      business: '비즈니스',
-      magazine: '매거진',
-      menuOpen: '메뉴 열기',
-      logoAlt: '유닛하우스 로고',
-    },
-    en: {
-      products: 'Products',
-      unitPoint: 'Unit Point',
-      company: 'Company',
-      business: 'Business',
-      magazine: 'Magazine',
-      menuOpen: 'Open Menu',
-      logoAlt: 'Unithaus Logo',
-    },
-  };
-
-  const t = isLangEng ? translations.en : translations.ko;
+  const enquiryLabel = language === 'en' ? 'Enquiry' : '상담 신청';
+  const menuOpenLabel = language === 'en' ? 'Open menu' : '메뉴 열기';
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center" style={{ marginTop: '18px' }}>
-      <div
-        className="flex items-center justify-between"
-        style={{
-          backgroundColor: 'rgba(228, 228, 228, 0.55)',
-          borderRadius: '30px',
-          padding: '0px 28px 0px 24px',
-          minHeight: '70px',
-          width: 'calc(100% - 40px)',
-          maxWidth: '1256px',
-        }}
-      >
-        {/* Desktop Layout */}
-        <div className="hidden lg:flex items-center justify-between w-full">
-          {/* Left: Logo */}
-          <div className="flex items-center" style={{ minWidth: '80px', width: '80px', marginRight: '40px' }}>
-            <Link href="/" className="block">
-              <img
-                src="/unitmaker_logo.svg"
-                alt={t.logoAlt}
-                style={{ width: '80px', height: 'auto' }}
-              />
-            </Link>
-          </div>
-
-          {/* Center: Navigation */}
-          <div className="flex items-center" style={{ gap: '0px 60px' }}>
-            <div className="flex items-center" style={{ gap: '0px 30px' }}>
-              <div
-                className="cursor-pointer"
-                style={{
-                  fontFamily: 'var(--font_default, Pretendard)',
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: 'var(--color_bTJRh_default, #222)',
-                  textAlign: 'center',
-                  lineHeight: 1,
-                  marginTop: '2px',
-                }}
+    <header className="fixed top-0 left-0 right-0 z-[1507]">
+      <div id="drop_filter" className="w-full bg-white px-[40px] shadow-[2px_2px_4px_0_rgba(170,170,170,1)] backdrop-blur-[5px]">
+        <div className="mx-auto flex min-h-[84px] w-full items-center justify-between lg:hidden">
+          <Link href="/" className="block">
+            <img
+              src="https://2e005bde5b8177f736ab4bdbf5632790.cdn.bubble.io/cdn-cgi/image/w=128,h=26,f=auto,dpr=1,fit=contain/f1763882356105x968589926989363500/Logo.png"
+              alt="unithaus logo"
+              className="h-auto w-[105px]"
+            />
+          </Link>
+          <div className="flex items-center gap-[10px]">
+            <a
+              href="https://unithaus.co.kr/?section=enquiry"
+              className="rounded-[35px] bg-[#222] px-[12px] py-[6px] text-[10px] font-medium leading-[1.5] tracking-[-0.5px] text-white no-underline"
+              style={{ fontFamily: 'var(--font_default, Pretendard)' }}
+            >
+              {enquiryLabel}
+            </a>
+            {language === 'ko' ? (
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className="cursor-pointer border-none bg-transparent p-0"
+                aria-label="Switch to English"
               >
-                {t.products}
-              </div>
-              <a
-                href="https://unithaus.co.kr/unitpoint"
-                target="_self"
-                className="cursor-pointer"
-                style={{
-                  fontFamily: 'var(--font_default, Pretendard)',
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: 'var(--color_bTJRh_default, #222)',
-                  textAlign: 'center',
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.5,
-                  textDecoration: 'none',
-                }}
-              >
-                {t.unitPoint}
-              </a>
-            </div>
-          </div>
-
-          {/* Right: Menu Items & Language Switch */}
-          <div className="flex items-center justify-end" style={{ gap: '0px 20px', flexGrow: 1, paddingRight: '30px' }}>
-            <div className="flex items-center" style={{ gap: '0px 30px' }}>
-              <a
-                href="https://unithaus.co.kr/company"
-                target="_self"
-                className="cursor-pointer"
-                style={{
-                  fontFamily: 'var(--font_default, Pretendard)',
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: 'var(--color_bTJRh_default, #222)',
-                  textAlign: 'center',
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.5,
-                  textDecoration: 'none',
-                  minHeight: '20px',
-                }}
-              >
-                {t.company}
-              </a>
-              <a
-                href="https://unithaus.co.kr/business"
-                target="_self"
-                className="cursor-pointer"
-                style={{
-                  fontFamily: 'var(--font_default, Pretendard)',
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: 'var(--color_bTJRh_default, #222)',
-                  textAlign: 'center',
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.5,
-                  textDecoration: 'none',
-                  minHeight: '20px',
-                }}
-              >
-                {t.business}
-              </a>
-              <a
-                href="https://unithaus.co.kr/magazine"
-                target="_self"
-                className="cursor-pointer"
-                style={{
-                  fontFamily: 'var(--font_default, Pretendard)',
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: 'var(--color_bTJRh_default, #222)',
-                  textAlign: 'center',
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.5,
-                  textDecoration: 'none',
-                  minHeight: '20px',
-                }}
-              >
-                {t.magazine}
-              </a>
-            </div>
-
-            {/* Language Switch */}
-            <div className="flex items-center" style={{ gap: '0px 8px' }}>
-              <div
-                style={{
-                  fontFamily: 'pretendard_medium, Pretendard',
-                  fontSize: '16px',
-                  color: 'var(--color_text_default, #222)',
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.5,
-                }}
-              >
-                {isLangEng ? 'ENG' : 'KOR'}
-              </div>
-              <div
-                className="relative"
-                style={{
-                  width: '59px',
-                  height: '34px',
-                  padding: '2px',
-                  borderRadius: '20px',
-                  backgroundColor: 'rgba(243, 243, 243, 1)',
-                  border: '2px solid rgba(213, 213, 213, 1)',
-                  cursor: 'pointer',
-                }}
-                onClick={() => setLanguage(isLangEng ? 'ko' : 'en')}
-              >
-                <div
-                  style={{
-                    width: '26px',
-                    height: '26px',
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 1)',
-                    border: '1px solid rgba(213, 213, 213, 1)',
-                    position: 'absolute',
-                    top: '50%',
-                    left: isLangEng ? 'calc(100% - 28px)' : '2px',
-                    transform: 'translateY(-50%)',
-                    transition: 'left 0.2s ease',
-                  }}
+                <img
+                  src="https://2e005bde5b8177f736ab4bdbf5632790.cdn.bubble.io/cdn-cgi/image/w=48,h=25,f=auto,dpr=1,fit=contain/f1772168273244x916036417208532900/KR.png"
+                  alt=""
+                  className="h-[16px] w-[31px]"
                 />
-              </div>
-            </div>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setLanguage('ko')}
+                className="flex cursor-pointer items-center gap-1 border-none bg-transparent p-0 text-[#222]"
+                aria-label="Switch to Korean"
+              >
+                <GlobeIcon className="h-4 w-4 shrink-0" />
+                <span
+                  className="text-[16px] font-medium tracking-[-0.5px]"
+                  style={{ fontFamily: 'var(--font_default, Pretendard)' }}
+                >
+                  EN
+                </span>
+              </button>
+            )}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="cursor-pointer border-none bg-transparent p-0 pl-[2px]"
+              aria-label={menuOpenLabel}
+            >
+              <img
+                src="https://2e005bde5b8177f736ab4bdbf5632790.cdn.bubble.io/cdn-cgi/image/w=32,h=21,f=auto,dpr=1,fit=contain/f1763951922456x371029390650290370/mobMenuIcon.png"
+                alt="menu"
+                className="h-[16px] w-[24px]"
+              />
+            </button>
           </div>
         </div>
 
-        {/* Mobile Layout */}
-        <div className="lg:hidden flex items-center justify-between w-full">
-          {/* Logo */}
-          <div className="flex items-center" style={{ minWidth: '80px', width: '80px', marginRight: '20px' }}>
+        <div className="mx-auto hidden min-h-[84px] w-[1360px] min-w-[1360px] max-w-[1360px] items-center justify-between lg:flex">
+          <div className="flex items-center gap-[70px]">
             <Link href="/" className="block">
               <img
-                src="/unitmaker_logo.svg"
-                alt={t.logoAlt}
-                style={{ width: '80px', height: 'auto' }}
+                src="https://2e005bde5b8177f736ab4bdbf5632790.cdn.bubble.io/cdn-cgi/image/w=128,h=26,f=auto,dpr=1,fit=contain/f1763882356105x968589926989363500/Logo.png"
+                alt="unithaus logo"
+                className="h-auto w-[105px]"
               />
             </Link>
+            <nav className="flex items-center gap-[30px]">
+              {desktopNavItems.map((item) => (
+                <DesktopNavLink key={item.id} item={item} />
+              ))}
+            </nav>
           </div>
 
-          {/* Right: Language & Menu Button */}
-          <div className="flex items-center justify-end" style={{ gap: '0px 10px', flexGrow: 1, marginRight: '10px' }}>
-            {/* Language Switch */}
-            <div className="flex items-center" style={{ gap: '0px 8px' }}>
-              <div
-                style={{
-                  fontFamily: 'pretendard_medium, Pretendard',
-                  fontSize: '16px',
-                  color: 'var(--color_text_default, #222)',
-                  letterSpacing: '-0.5px',
-                  lineHeight: 1.5,
-                }}
-              >
-                {isLangEng ? 'ENG' : 'KOR'}
-              </div>
-              <div
-                className="relative"
-                style={{
-                  width: '59px',
-                  height: '34px',
-                  padding: '2px',
-                  borderRadius: '20px',
-                  backgroundColor: 'rgba(243, 243, 243, 1)',
-                  border: '2px solid rgba(213, 213, 213, 1)',
-                  cursor: 'pointer',
-                }}
-                onClick={() => setLanguage(isLangEng ? 'ko' : 'en')}
-              >
-                <div
-                  style={{
-                    width: '26px',
-                    height: '26px',
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(255, 255, 255, 1)',
-                    border: '1px solid rgba(213, 213, 213, 1)',
-                    position: 'absolute',
-                    top: '50%',
-                    left: isLangEng ? 'calc(100% - 28px)' : '2px',
-                    transform: 'translateY(-50%)',
-                    transition: 'left 0.2s ease',
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="cursor-pointer"
-              style={{
-                width: '24px',
-                height: '16px',
-                border: 'none',
-                background: 'transparent',
-                padding: 0,
-              }}
-              aria-label={t.menuOpen}
+          <div className="hidden lg:flex items-center gap-[22px]">
+            <a
+              href="https://unithaus.co.kr/?section=enquiry"
+              className="rounded-[35px] bg-[#222] px-[14px] py-[8px] text-[16px] font-semibold leading-[1.5] tracking-[-0.5px] text-white no-underline"
+              style={{ fontFamily: 'var(--font_default, Pretendard)' }}
             >
-              <svg
-                width="24"
-                height="16"
-                viewBox="0 0 24 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              {enquiryLabel}
+            </a>
+            {language === 'ko' ? (
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className="cursor-pointer border-none bg-transparent p-0"
+                aria-label="Switch to English"
               >
-                <rect width="24" height="2" fill="currentColor" />
-                <rect y="7" width="24" height="2" fill="currentColor" />
-                <rect y="14" width="24" height="2" fill="currentColor" />
-              </svg>
-            </button>
+                <img
+                  src="https://2e005bde5b8177f736ab4bdbf5632790.cdn.bubble.io/cdn-cgi/image/w=48,h=25,f=auto,dpr=1,fit=contain/f1772168273244x916036417208532900/KR.png"
+                  alt=""
+                  className="h-[21px] w-[41px]"
+                />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setLanguage('ko')}
+                className="flex cursor-pointer items-center gap-1.5 border-none bg-transparent p-0 text-[#222]"
+                aria-label="Switch to Korean"
+              >
+                <GlobeIcon className="h-[21px] w-[21px] shrink-0" />
+                <span
+                  className="text-[16px] font-medium tracking-[-0.5px]"
+                  style={{ fontFamily: 'var(--font_default, Pretendard)' }}
+                >
+                  EN
+                </span>
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div
-          className="lg:hidden fixed top-[88px] left-0 right-0 bg-white shadow-lg animate-fadeIn"
-          style={{
-            backgroundColor: 'rgba(228, 228, 228, 0.95)',
-            borderRadius: '0 0 30px 30px',
-            margin: '0 20px',
-            padding: '20px 30px',
-          }}
-        >
-          <nav className="flex flex-col space-y-4">
-            <div
-              className="cursor-pointer"
-              style={{
-                fontFamily: 'var(--font_default, Pretendard)',
-                fontSize: '16px',
-                fontWeight: 600,
-                color: 'var(--color_bTJRh_default, #222)',
-              }}
-            >
-              {t.products}
-            </div>
-            <a
-              href="https://unithaus.co.kr/unitpoint"
-              target="_self"
-              className="cursor-pointer"
-              style={{
-                fontFamily: 'var(--font_default, Pretendard)',
-                fontSize: '16px',
-                fontWeight: 600,
-                color: 'var(--color_bTJRh_default, #222)',
-                textDecoration: 'none',
-              }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.unitPoint}
-            </a>
-            <a
-              href="https://unithaus.co.kr/company"
-              target="_self"
-              className="cursor-pointer"
-              style={{
-                fontFamily: 'var(--font_default, Pretendard)',
-                fontSize: '16px',
-                fontWeight: 600,
-                color: 'var(--color_bTJRh_default, #222)',
-                textDecoration: 'none',
-              }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.company}
-            </a>
-            <a
-              href="https://unithaus.co.kr/business"
-              target="_self"
-              className="cursor-pointer"
-              style={{
-                fontFamily: 'var(--font_default, Pretendard)',
-                fontSize: '16px',
-                fontWeight: 600,
-                color: 'var(--color_bTJRh_default, #222)',
-                textDecoration: 'none',
-              }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.business}
-            </a>
-            <a
-              href="https://unithaus.co.kr/magazine"
-              target="_self"
-              className="cursor-pointer"
-              style={{
-                fontFamily: 'var(--font_default, Pretendard)',
-                fontSize: '16px',
-                fontWeight: 600,
-                color: 'var(--color_bTJRh_default, #222)',
-                textDecoration: 'none',
-              }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.magazine}
-            </a>
+        <div className="lg:hidden bg-white px-5 py-4 shadow-md">
+          <nav className="flex flex-col space-y-3">
+            {desktopNavItems.map((item) => (
+              <div key={item.id}>
+                <a
+                  href={item.href}
+                  className="text-[16px] font-medium leading-[1.5] tracking-[-0.5px] text-[#222] no-underline"
+                  onClick={() => !item.dropdown && setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+                {item.dropdown && (
+                  <div className="mt-2 ml-2 flex flex-col gap-2 border-l border-[#eee] pl-3">
+                    {item.dropdown.map((sub) => (
+                      <a
+                        key={sub.label}
+                        href={sub.href}
+                        className="text-[14px] font-medium text-[#555] no-underline"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {sub.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </nav>
         </div>
       )}
