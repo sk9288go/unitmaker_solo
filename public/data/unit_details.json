@@ -1,0 +1,232 @@
+{
+  "u-9-1": {
+    "title": "U-9-1 상세",
+    "description": "9평형 U타입은 1~2인 가구에 최적화된 컴팩트 하우스입니다. 공간 분리와 수납 특화 설계로 실용성을 높였습니다.",
+    "type": "U",
+    "etc": "열발자국 안에 담긴 나만의 라이프스타일",
+    "hashtags": ["침실 1개", "욕실 1개", "컴팩트", "공간 분리"],
+    "url": "https://www.unitmaker.co.kr/U-9-1/9",
+    "price_wood": 52400000,
+    "price_steel": 61400000
+  },
+  "u-6-2": {
+    "title": "U-6-2 상세",
+    "description": "6평형 U타입은 1인 가구 또는 세컨드 하우스로 적합한 초소형 유닛입니다. 수납 특화와 컴팩트한 공간이 특징입니다.",
+    "type": "U",
+    "etc": "작지만 알찬 공간 활용",
+    "hashtags": ["침실 1개", "욕실 1개", "컴팩트", "수납 특화"],
+    "url": "https://www.unitmaker.co.kr/U-6-2/11",
+    "price_wood": 36210000,
+    "price_steel": 41010000
+  },
+  "u-6-1": {
+    "title": "U-6-1 상세",
+    "description": "6평형 U타입의 또 다른 버전으로, 주방 특화와 수납 특화가 결합된 실용적인 유닛입니다.",
+    "type": "U",
+    "etc": "주방과 수납에 집중한 설계",
+    "hashtags": ["욕실 1개", "컴팩트", "주방 특화", "수납 특화"],
+    "url": "https://www.unitmaker.co.kr/U-6-1/10",
+    "price_wood": 39840000,
+    "price_steel": 43440000
+  },
+  "t-21-2": {
+    "title": "T-21-2 상세",
+    "description": "21평형 T타입은 2~3인 가구를 위한 넓은 거실과 주방 특화 설계가 특징입니다.",
+    "type": "T",
+    "etc": "2~3인 가구를 위한 컴팩트한 공간 분리",
+    "hashtags": ["침실 2개", "욕실 1개", "넓은 거실", "주방 특화"],
+    "url": "https://www.unitmaker.co.kr/T-21-2/28",
+    "price_wood": 116040000,
+    "price_steel": 137040000
+  },
+  "t-21-1": {
+    "title": "T-21-1 상세",
+    "description": "21평형 T타입의 또 다른 버전으로, 3개의 침실과 넓은 거실, 컴팩트한 공간 활용이 강점입니다.",
+    "type": "T",
+    "etc": "4인 가구를 위한 컴팩트한 공간 분리",
+    "hashtags": ["침실 3개", "욕실 1개", "넓은 거실", "컴팩트"],
+    "url": "https://www.unitmaker.co.kr/T-21-1/27",
+    "price_wood": 116760000,
+    "price_steel": 137760000
+  },
+  "t-18-3": {
+    "title": "T-18-3 상세",
+    "description": "18평형 T타입은 2개의 침실과 2개의 욕실, 주방 특화, 공간 분리로 가족 단위에 적합합니다.",
+    "type": "T",
+    "etc": "3~4인 가구를 위한 실용적인 공간 분리",
+    "hashtags": ["침실 2개", "욕실 2개", "주방 특화", "공간 분리"],
+    "url": "https://www.unitmaker.co.kr/T-18-3/22",
+    "price_wood": 97690000,
+    "price_steel": 115690000
+  },
+  "t-18-2": {
+    "title": "T-18-2 상세",
+    "description": "18평형 T타입의 또 다른 버전으로, 아웃도어와 주방 특화가 결합된 라이프스타일을 제안합니다.",
+    "type": "T",
+    "etc": "아웃도어 라이프를 위한 확장형 공간 구성",
+    "hashtags": ["침실 2개", "욕실 1개", "아웃도어", "주방 특화"],
+    "url": "https://www.unitmaker.co.kr/T-18-2/21",
+    "price_wood": 98970000,
+    "price_steel": 116970000
+  },
+  "t-18-1": {
+    "title": "T-18-1 상세",
+    "description": "18평형 T타입의 완성형 공간 구성, 주방 특화와 수납 특화가 강점입니다.",
+    "type": "T",
+    "etc": "3~4인 가구를 위한 완성형 공간 구성",
+    "hashtags": ["침실 2개", "욕실 1개", "주방 특화", "수납 특화"],
+    "url": "https://www.unitmaker.co.kr/T-18-1/20",
+    "price_wood": 98820000,
+    "price_steel": 116820000
+  },
+  "t-15-5": {
+    "title": "T-15-5 상세",
+    "description": "15평형 T타입은 다양한 취미를 가진 2인 가구를 위한 하우스입니다. 세컨룸이 특징입니다.",
+    "type": "T",
+    "etc": "다양한 취미를 가진 2인 가구를 위한 하우스",
+    "hashtags": ["침실 1개", "욕실 1개", "주방 특화", "세컨룸"],
+    "url": "https://www.unitmaker.co.kr/T-15-5/17",
+    "price_wood": 83230000,
+    "price_steel": 98230000
+  },
+  "t-15-4": {
+    "title": "T-15-4 상세",
+    "description": "15평형 T타입의 또 다른 버전, 공간 분리와 세컨룸이 특징입니다.",
+    "type": "T",
+    "etc": "2~3인 가구를 위한 합리적인 공간 구성",
+    "hashtags": ["침실 2개", "욕실 1개", "공간 분리", "세컨룸"],
+    "url": "https://www.unitmaker.co.kr/T-15-4/16",
+    "price_wood": 84150000,
+    "price_steel": 99150000
+  },
+  "t-15-3": {
+    "title": "T-15-3 상세",
+    "description": "15평형 T타입의 실용적 공간 분리와 수납 특화가 강점입니다.",
+    "type": "T",
+    "etc": "2~3인 가구를 위한 실용적 공간 분리",
+    "hashtags": ["침실 1개", "욕실 1개", "공간 분리", "수납 특화"],
+    "url": "https://www.unitmaker.co.kr/T-15-3/15",
+    "price_wood": 85010000,
+    "price_steel": 100010000
+  },
+  "t-15-2": {
+    "title": "T-15-2 상세",
+    "description": "15평형 T타입의 아웃도어와 주방 특화가 결합된 공간입니다.",
+    "type": "T",
+    "etc": "아웃도어 라이프를 위한 공간 구성",
+    "hashtags": ["침실 1개", "욕실 1개", "주방 특화", "아웃도어"],
+    "url": "https://www.unitmaker.co.kr/T-15-2/14",
+    "price_wood": 83530000,
+    "price_steel": 98530000
+  },
+  "t-15-1": {
+    "title": "T-15-1 상세",
+    "description": "15평형 T타입의 넓은 거실과 주방 특화가 결합된 유닛입니다.",
+    "type": "T",
+    "etc": "1~2인 가구의 확장된 라이프스타일",
+    "hashtags": ["침실 1개", "욕실 1개", "주방 특화", "넓은 거실"],
+    "url": "https://www.unitmaker.co.kr/T-15-1/13",
+    "price_wood": 82720000,
+    "price_steel": 97720000
+  },
+  "t-12-3": {
+    "title": "T-12-3 상세",
+    "description": "12평형 T타입은 1~2인 가구를 위한 다이닝 라이프스타일에 적합합니다.",
+    "type": "T",
+    "etc": "1~2인 가구를 위한 다이닝 라이프스타일",
+    "hashtags": ["침실 1개", "욕실 1개", "주방 특화", "컴팩트"],
+    "url": "https://www.unitmaker.co.kr/T-12-3/18",
+    "price_wood": 67350000,
+    "price_steel": 79350000
+  },
+  "t-12-2": {
+    "title": "T-12-2 상세",
+    "description": "12평형 T타입의 공간 분리와 컴팩트함이 특징입니다.",
+    "type": "T",
+    "etc": "2~3인 가구를 위한 컴팩트한 공간 분리",
+    "hashtags": ["침실 2개", "욕실 1개", "공간 분리", "컴팩트"],
+    "url": "https://www.unitmaker.co.kr/T-12-2/2",
+    "price_wood": 67710000,
+    "price_steel": 79710000
+  },
+  "t-12-1": {
+    "title": "T-12-1 상세",
+    "description": "12평형 T타입의 컴팩트함과 세컨룸이 결합된 유닛입니다.",
+    "type": "T",
+    "etc": "1~2인 가구의 컴팩트한 라이프스타일",
+    "hashtags": ["침실 1개", "욕실 1개", "컴팩트", "세컨룸"],
+    "url": "https://www.unitmaker.co.kr/T-12-1/1",
+    "price_wood": 68850000,
+    "price_steel": 80850000
+  },
+  "s-18-1": {
+    "title": "S-18-1 상세",
+    "description": "18평형 S타입은 2개의 침실과 멀티룸, 주방 특화가 결합된 가족형 유닛입니다.",
+    "type": "S",
+    "etc": "2~3인 가구의 확장형 라이프스타일",
+    "hashtags": ["침실 2개", "욕실 1개", "주방 특화", "멀티룸"],
+    "url": "https://www.unitmaker.co.kr/S-18-1/26",
+    "price_wood": 99370000,
+    "price_steel": 113770000
+  },
+  "s-15-1": {
+    "title": "S-15-1 상세",
+    "description": "15평형 S타입은 넓은 거실과 주방 특화가 결합된 1~2인 가구용 유닛입니다.",
+    "type": "S",
+    "etc": "1~2인 가구의 확장형 라이프스타일",
+    "hashtags": ["침실 1개", "욕실 1개", "주방 특화", "넓은 거실"],
+    "url": "https://www.unitmaker.co.kr/S-15-1/12",
+    "price_wood": 82680000,
+    "price_steel": 94680000
+  },
+  "h-30-1": {
+    "title": "H-30-1 상세",
+    "description": "30평형 H타입은 4개의 침실과 2개의 욕실, 공간 분리와 주방 특화가 결합된 대형 유닛입니다.",
+    "type": "H",
+    "etc": "다양한 구성의 복합형 구조",
+    "hashtags": ["침실 4개", "욕실 2개", "공간 분리", "주방 특화"],
+    "url": "https://www.unitmaker.co.kr/H-30-1/29",
+    "price_wood": 158250000,
+    "price_steel": 176250000
+  },
+  "h-24-2": {
+    "title": "H-24-2 상세",
+    "description": "24평형 H타입은 공간 분리와 넓은 거실이 특징인 가족형 유닛입니다.",
+    "type": "H",
+    "etc": "프라이빗한 중정과 분리된 생활 공간",
+    "hashtags": ["침실 2개", "욕실 1개", "공간 분리", "넓은 거실"],
+    "url": "https://www.unitmaker.co.kr/H-24-2/25",
+    "price_wood": 132770000,
+    "price_steel": 147170000
+  },
+  "h-24-1": {
+    "title": "H-24-1 상세",
+    "description": "24평형 H타입의 넓은 거실과 중정이 결합된 완성형 공간 구성입니다.",
+    "type": "H",
+    "etc": "중정과 함께하는 완성형 공간 구성",
+    "hashtags": ["침실 3개", "욕실 2개", "넓은 거실", "중정"],
+    "url": "https://www.unitmaker.co.kr/H-24-1/24",
+    "price_wood": 135190000,
+    "price_steel": 149590000
+  },
+  "h-21-2": {
+    "title": "H-21-2 상세",
+    "description": "21평형 H타입은 아웃도어와 중정이 결합된 라이프스타일을 제안합니다.",
+    "type": "H",
+    "etc": "거실과 중정이 하나 되는 아웃도어 라이프스타일",
+    "hashtags": ["침실 2개", "욕실 1개", "아웃도어", "중정"],
+    "url": "https://www.unitmaker.co.kr/H-21-2/23",
+    "price_wood": 115980000,
+    "price_steel": 130680000
+  },
+  "h-21-1": {
+    "title": "H-21-1 상세",
+    "description": "21평형 H타입의 주방 특화와 중정이 결합된 다이닝 라이프스타일 유닛입니다.",
+    "type": "H",
+    "etc": "중정과 함께하는 다이닝 라이프스타일",
+    "hashtags": ["침실 2개", "욕실 1개", "주방 특화", "중정"],
+    "url": "https://www.unitmaker.co.kr/H-21-1/19",
+    "price_wood": 115630000,
+    "price_steel": 130330000
+  }
+}
